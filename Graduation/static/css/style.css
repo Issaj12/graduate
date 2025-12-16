@@ -1,232 +1,322 @@
 /* =========================
-   Base Styles
+   GLOBAL
 ========================= */
+
 body {
-    background-color: ivory;
     margin: 0;
-}
-
-/* Image section */
-.yolo {
-    background-image: url('../images/focus.png');
-    width: 100%;
-    height: 750px; /* Adjust as needed */
-    background-size: cover;  /* Makes sure the image covers the div */
-    background-position: center; /* Center the image */
-    background-repeat: no-repeat;
-    
-    display: flex;  /* Enable flexbox */
-    justify-content: center; /* Horizontal center */
-    align-items: center; /* Vertical center */
-    text-align: center; /* Ensure text inside is centered */
-    position: relative; /* Good for stacking text */
-}
-
-/* Animated heading */
-h1.one {
-    color: ivory;
-    font-size: 32px; /* Adjust size as needed */
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.6); /* Makes text readable */
-    margin: 0; /* Remove default margin */
-    padding: 0 20px; /* Optional padding for mobile */
-}
-
-.word {
-    opacity: 0;
-    display: inline-block;
-    animation: fadeIn 0.5s forwards;
-}
-
-@keyframes fadeIn {
-    to {
-        opacity: 1;
-    }
-}
-
-/* Secondary heading */
-h1.two {
-    text-align: center;
-    color: dimgrey;
-}
-
-/* List styles */
-div > ul > li {
-    list-style-type: none;
-}
-
-div > ul {
-    background-color: #B8B08D;
+    background-color: ivory;
+    font-family: Arial, sans-serif;
 }
 
 /* =========================
-   Navbar Styles
+   NAVBAR
 ========================= */
+
 .navbar {
-    width: 100%;
-    background-color: #B8B08D;
-    color: #202C39;
-    font-family: Arial, sans-serif;
+    background-color: #202C39;
+    padding: 15px 30px;
+    position: relative;
+    z-index: 1000;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
 }
 
 .nav-container {
     max-width: 1200px;
-    margin: 0 auto;
+    margin: auto;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 10px 20px;
 }
 
-.nav-container > img {
-    width: 60px;
-    height: 60px;
-}
-
-/* Logo */
-.navbar .logo {
-    font-size: 24px;
-    font-weight: bold;
-    text-decoration: none;
-    color: ivory;
+.nav-container img {
+    height: 45px;
 }
 
 /* Menu */
 .nav-menu {
     list-style: none;
     display: flex;
-    gap: 20px;
+    gap: 30px;
     margin: 0;
     padding: 0;
 }
 
 .nav-menu li a {
     text-decoration: none;
-    color: #202C39;
-    font-size: 18px;
-    transition: color 0.3s;
+    color: #B8B08D;
+    font-weight: 500;
+    transition: 0.3s;
 }
 
 .nav-menu li a:hover {
-    color: #ffd700; /* Gold on hover */
+    color: #F2D492;
 }
 
-/* Hamburger for mobile */
+/* Hamburger */
 .hamburger {
     display: none;
     flex-direction: column;
     cursor: pointer;
-    gap: 4px;
 }
 
 .hamburger span {
-    width: 25px;
     height: 3px;
-    background-color: ivory;
+    width: 26px;
+    background-color: #F29559;
+    margin: 4px 0;
+    border-radius: 3px;
+    transition: 0.4s;
+}
+
+/* Hamburger animation */
+.hamburger.open span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+
+.hamburger.open span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.open span:nth-child(3) {
+    transform: rotate(-45deg) translate(6px, -6px);
 }
 
 /* =========================
-   Footer Styles
+   HERO / DASHBOARD
 ========================= */
-.site-footer {
-    background-color:#283845;
-    color: ivory;
-    text-align: center;
-    padding: 15px 0;
-    font-size: 30px;
-    font-weight:900;
-    width: 100%;
+
+.yolo {
+    background-image: url('../images/focus.png');
+    height: 750px;
+    background-size: cover;
+    background-position: center;
     position: relative;
-    bottom: 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-/* Responsive footer text */
-@media (max-width: 768px) {
-    .site-footer {
-        font-size: 16px;
-        padding: 10px 0;
+.yolo::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(32, 44, 57, 0.6);
+}
+
+h1.one {
+    color: ivory;
+    font-size: 42px;
+    z-index: 2;
+    text-align: center;
+    max-width: 900px;
+    padding: 0 20px;
+    text-shadow: 2px 2px 6px rgba(0,0,0,0.6);
+}
+
+/* Word animation */
+.word {
+    opacity: 0;
+    transform: translateY(20px);
+    display: inline-block;
+    animation: fadeUp 0.8s forwards;
+}
+
+@keyframes fadeUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
     }
 }
 
 /* =========================
-   Responsive Media Queries
+   FOOTER
 ========================= */
 
-/* Mobile view (≤768px) */
-@media (max-width: 768px) {
-    .nav-menu {
-        position: absolute;
-        top: 60px;
-        left: -100%;
-        flex-direction: column;
-        background-color: brown;
-        width: 100%;
-        transition: left 0.3s;
-        text-align: center;
-    }
+.site-footer {
+    background-color: #202C39;
+    color: #B8B08D;
+    padding: 30px 15px;
+    text-align: center;
+}
 
-    .nav-menu.active {
-        left: 0;
-    }
+.footer-line {
+    display: block;
+    width: 60px;
+    height: 3px;
+    background-color: #F29559;
+    margin: 10px auto;
+}
+
+.site-footer small {
+    color: #F2D492;
+}
+
+/* =========================
+   IMAGE OF THE DAY
+========================= */
+
+/* Container wrapper for image templates */
+.img-day-container {
+    max-width: 1000px;
+    margin: 50px auto;
+    padding: 0 20px;
+}
+
+/* ===== Image Upload Form ===== */
+.img-upload-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    background-color: #F2D492;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+.img-upload-form label {
+    font-weight: 600;
+    color: #202C39;
+}
+
+.img-upload-form input[type="file"],
+.img-upload-form textarea {
+    padding: 10px;
+    border: 2px solid #283845;
+    border-radius: 6px;
+    font-size: 14px;
+    width: 100%;
+}
+
+.img-upload-form button {
+    padding: 12px 20px;
+    background-color: #283845;
+    color: #F2D492;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background 0.3s ease;
+}
+
+.img-upload-form button:hover {
+    background-color: #202C39;
+}
+
+/* Link to view all photos */
+.img-view-link {
+    display: inline-block;
+    margin-top: 20px;
+    text-decoration: none;
+    color: #F29559;
+    font-weight: 600;
+}
+
+.img-view-link:hover {
+    color: #B8B08D;
+}
+
+/* ===== Gallery Styling ===== */
+.img-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 20px;
+    margin-top: 30px;
+}
+
+.img-card {
+    background-color: #F2D492;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    transition: transform 0.3s ease;
+}
+
+.img-card:hover {
+    transform: translateY(-5px);
+}
+
+.img-card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+.img-card p {
+    font-size: 14px;
+    color: #202C39;
+    text-align: center;
+    margin: 5px 0;
+}
+
+.img-card small {
+    font-size: 12px;
+    color: #283845;
+}
+
+/* Message when no images exist */
+.img-empty {
+    text-align: center;
+    font-size: 18px;
+    color: #283845;
+    margin-top: 20px;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 768px) {
 
     .hamburger {
         display: flex;
     }
 
-    /* Adjust heading font size on small screens */
-    h1.one {
-        font-size: 24px;
+    .nav-menu {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: #202C39;
+        flex-direction: column;
+        align-items: center;
+        display: none;
+        padding: 20px 0;
+        z-index: 999;
     }
 
-    h1.two {
-        font-size: 18px;
+    .nav-menu.active {
+        display: flex;
     }
 
-    .yolo {
-        height: 500px; /* smaller image height for mobile */
+    .nav-menu li {
+        margin: 15px 0;
     }
-}
 
-/* Tablets (769px – 1023px) */
-@media (min-width: 769px) and (max-width: 1023px) {
     h1.one {
         font-size: 28px;
     }
 
-    h1.two {
-        font-size: 20px;
-    }
-
     .yolo {
-        height: 600px;
-    }
-}
-
-/* Laptops (1024px – 1279px) */
-@media (min-width: 1024px) and (max-width: 1279px) {
-    h1.one {
-        font-size: 32px;
+        height: 550px;
     }
 
-    h1.two {
-        font-size: 24px;
+    /* Gallery responsive */
+    .img-gallery {
+        grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
     }
 
-    .yolo {
-        height: 700px;
-    }
-}
-
-/* Large desktops (1280px and above) */
-@media (min-width: 1280px) {
-    h1.one {
-        font-size: 36px;
+    .img-card img {
+        height: 140px;
     }
 
-    h1.two {
-        font-size: 28px;
-    }
-
-    .yolo {
-        height: 750px;
+    .img-upload-form {
+        padding: 20px;
     }
 }
