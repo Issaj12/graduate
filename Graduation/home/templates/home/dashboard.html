@@ -1,0 +1,31 @@
+ 
+ 
+ {% extends 'main.html' %}
+ {% block content %}
+ <div class="yolo">
+        <h1 class="one" id="animated-text">Welcome to the graduation page</h1>
+    </div>
+    <h1 class="two">SURELY THERE IS LIGHT IN THE END OF THE TUNNEL</h1>
+
+  
+
+    <!-- JavaScript goes here -->
+    <script>
+        const textElement = document.getElementById('animated-text');
+        const text = textElement.innerText;
+        const words = text.split(' ');
+
+        textElement.innerHTML = ''; // Clear original text
+
+        words.forEach((word, index) => {
+            const span = document.createElement('span');
+            span.className = 'word';
+            span.style.animationDelay = `${index * 0.5}s`; // delay per word
+            span.innerText = word + ' ';
+            textElement.appendChild(span);
+
+             textElement.appendChild(document.createTextNode(' '));
+        });
+    </script>
+
+    {%  endblock %}
