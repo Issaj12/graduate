@@ -339,6 +339,73 @@ h1.one {
     margin-bottom: 20px;
 }
 
+/* =========================
+   ACCOUNT FORMS
+========================= */
+
+.account-form {
+    max-width: 400px;
+    margin: 50px auto;
+    background-color: #F2D492;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.account-form h2 {
+    text-align: center;
+    color: #202C39;
+}
+
+.account-form input[type="text"],
+.account-form input[type="email"],
+.account-form input[type="password"] {
+    padding: 12px;
+    border: 2px solid #283845;
+    border-radius: 6px;
+    font-size: 14px;
+    width: 100%;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.account-form input:focus {
+    outline: none;
+    border-color: #F29559;
+    box-shadow: 0 0 8px rgba(242, 212, 146, 0.5);
+}
+
+.account-form button {
+    padding: 12px;
+    background-color: #283845;
+    color: #F2D492;
+    border: none;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.account-form button:hover {
+    background-color: #202C39;
+    transform: translateY(-2px);
+}
+
+.account-form a {
+    text-align: center;
+    display: block;
+    color: #202C39;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.account-form a:hover {
+    color: #F29559;
+}
+
+
 
 /* =========================
    RESPONSIVE

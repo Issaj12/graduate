@@ -41,6 +41,8 @@ INSTALLED_APPS = [
     'home',
     'images',
     'contact',
+    'chat',
+    'accounts',
     
 ]
 
@@ -125,3 +127,8 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+# email 
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/accounts/login/' 
