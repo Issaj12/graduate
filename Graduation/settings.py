@@ -52,14 +52,14 @@ INSTALLED_APPS = [
     'django_daraja',
     'adm',
     # while deploying
-    # 'whitenoise.runserver_nostatic'
+     'whitenoise.runserver_nostatic'
     
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     # while deploying
-    # 'whitenoise.middleware.WhiteNoiseMiddleware',
+     'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
