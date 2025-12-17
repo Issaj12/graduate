@@ -1,0 +1,10 @@
+{% extends 'main_footer.html' %}
+{% block content %}
+
+<h2>Payment Failed</h2>
+<p>Error: {{ error }}</p>
+<a href="{% url 'initiate_payment' %}">Try Again</a>
+
+
+
+{% endblock %}
