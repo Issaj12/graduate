@@ -1,12 +1,12 @@
-{% extends 'main_footer.html' %}
-{% block content %}
+{% extends 'main_footer.html' %} {% block content %}
 
-<h2>Make a Payment</h2>
-<form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Pay</button>
-</form>
+<div class="payment-container">
+  <h2>Make a Payment</h2>
+
+  <form method="post" class="payment-form">
+    {% csrf_token %} {{ form.as_p }}
+    <button type="submit" class="btn-pay">Pay Now</button>
+  </form>
+</div>
 
 {% endblock %}
-

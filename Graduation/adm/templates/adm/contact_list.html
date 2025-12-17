@@ -1,0 +1,29 @@
+{% extends 'main_footer.html' %} {% load static %} {% block content %}
+
+<h1>Contacts</h1>
+<a href="{% url 'adm_contact_create' %}" class="btn btn-primary"
+  >Add New Contact</a
+>
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Contact</th>
+    <th>Email</th>
+    <th>Message</th>
+    <th>Actions</th>
+  </tr>
+  {% for contact in contacts %}
+  <tr>
+    <td>{{ contact.name }}</td>
+    <td>{{ contact.contact }}</td>
+    <td>{{ contact.email }}</td>
+    <td>{{ contact.message }}</td>
+    <td>
+      <a href="{% url 'adm_contact_update' contact.pk %}">Edit</a>
+      <a href="{% url 'adm_contact_delete' contact.pk %}">Delete</a>
+    </td>
+  </tr>
+  {% endfor %}
+</table>
+
+{% endblock %}

@@ -1,22 +1,24 @@
-{% extends 'main_footer.html' %}
-{% load static %}
-
-{% block content %}
+{% extends 'main_footer.html' %} {% load static %} {% block content %}
 <div class="img-day-container">
-    <h1>Upload Multiple Images</h1>
+  <h1>Upload Multiple Images</h1>
 
-    <form method="post" enctype="multipart/form-data" class="img-upload-form">
-        {% csrf_token %}
+  <form method="post" enctype="multipart/form-data" class="img-upload-form">
+    {% csrf_token %}
 
-        <label for="images">Select Images:</label>
-        <input type="file" id="images" name="images" multiple required>
+    <label for="images">Select Images:</label>
+    <input type="file" id="images" name="images" multiple required />
 
-        <label for="description">Description for all images (optional):</label>
-        <textarea id="description" name="description" placeholder="Add a description for all images..." rows="3"></textarea>
+    <label for="description">Description for all images (optional):</label>
+    <textarea
+      id="description"
+      name="description"
+      placeholder="Add a description for all images..."
+      rows="3"
+    ></textarea>
 
-        <button type="submit">Upload</button>
-    </form>
+    <button type="submit">Upload</button>
+  </form>
 
-    <a href="{% url 'all' %}" class="img-view-link">View All Photos</a>
+  <a href="{% url 'all' %}" class="img-view-link">View All Photos</a>
 </div>
 {% endblock %}

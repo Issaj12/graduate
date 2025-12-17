@@ -1,23 +1,24 @@
-{% extends 'main_footer.html' %}
-
-{% block content %}
+{% extends 'main_footer.html' %} {% block content %}
 <h2>Public Chat Room</h2>
-<div id="chat-log" style="border:1px solid black; height:300px; overflow-y:scroll;">
-    {% for message in messages %}
-        <b>{{ message.user.username }}:</b> {{ message.content }}<br>
-    {% endfor %}
+<div
+  id="chat-log"
+  style="border: 1px solid black; height: 300px; overflow-y: scroll"
+>
+  {% for message in messages %}
+  <b>{{ message.user.username }}:</b> {{ message.content }}<br />
+  {% endfor %}
 </div>
 
 <form method="post" id="chat-form">
-    {% csrf_token %}
-    <input type="text" name="message" id="message-input" size="80">
-    <button type="submit">Send</button>
+  {% csrf_token %}
+  <input type="text" name="message" id="message-input" size="80" />
+  <button type="submit">Send</button>
 </form>
 
 <script>
-document.getElementById("chat-form").onsubmit = function(e) {
+  document.getElementById("chat-form").onsubmit = function (e) {
     e.preventDefault(); // Prevent full page reload
-    this.submit();      // Let Django handle message submission
-};
+    this.submit(); // Let Django handle message submission
+  };
 </script>
 {% endblock %}

@@ -1,43 +1,61 @@
 {% load static %}
 
 <nav class="navbar">
-    <div class="nav-container">
+  <div class="nav-container">
+    <a href="{% url 'home' %}">
+      <img src="{% static 'images/graduation.png' %}" alt="Graduation Logo" />
+    </a>
+    {% if user.is_staff %} {# Only show admin link for staff/admin users #}
+    <a
+      style="
+        text-decoration: none;
+        color: #b8b08d;
+        font-weight: 500;
+        transition: 0.3s;
+      "
+      href="{% url 'dashboard' %}"
+      >Admin Dashboard</a
+    >
+    {% endif %}
 
-        <a href="{% url 'home' %}">
-            <img src="{% static 'images/graduation.png' %}" alt="Graduation Logo">
+    <ul class="nav-menu">
+      {% if not user.is_authenticated %}
+      <li><a href="{% url 'link' %}">Messages</a></li>
+      {% else %}
+      <li><a href="{% url 'chat' %}">Messages</a></li>
+      {% endif %}
+
+      <li><a href="{% url 'contact' %}">Contact</a></li>
+      <li><a href="{% url 'all' %}">Images of the Day</a></li>
+      <li><a href="{% url 'initiate_payment' %}">Payments</a></li>
+
+      {% if user.is_authenticated %}
+      <li>
+        <a
+          href="#"
+          onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
+        >
+          Logout
         </a>
+        <form
+          id="logout-form"
+          method="post"
+          action="{% url 'logout' %}"
+          style="display: none"
+        >
+          {% csrf_token %}
+        </form>
+      </li>
 
-        <ul class="nav-menu">
-           {% if not user.is_authenticated %}
-                <li><a href="{% url 'link' %}">Messages</a></li>
-            {% else %}
-                <li><a href="{% url 'chat' %}">Messages</a></li>
-            {% endif %}
+      {% else %}
+      <li><a href="{% url 'login' %}">Login</a></li>
+      {% endif %}
+    </ul>
 
-            <li><a href="{% url 'contact' %}">Contact</a></li>
-            <li><a href="{% url 'all' %}">Images of the Day</a></li>
-            <li><a href="{% url 'initiate_payment' %}">Payments</a></li>
-            
-            {% if user.is_authenticated %}
-            <li>
-                <form method="post" action="{% url 'logout' %}" style="display:inline;">
-                    {% csrf_token %}
-                    <button type="submit" style="background:none;border:none;color:#fff;cursor:pointer;">
-                        Logout
-                    </button>
-                </form>
-            </li>
-            {% else %}
-                <li><a href="{% url 'login' %}">Login</a></li>
-            {% endif %}
-
-        </ul>
-
-        <div class="hamburger">
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
-
+    <div class="hamburger">
+      <span></span>
+      <span></span>
+      <span></span>
     </div>
+  </div>
 </nav>
