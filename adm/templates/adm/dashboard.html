@@ -1,0 +1,16 @@
+{% extends 'main_footer.html' %}
+{% load static %}
+
+{% block content %}
+
+<h1>Admin Dashboard</h1>
+
+<ul class="dashboard-menu">
+    <li><a href="{% url 'user_list' %}">Manage Users</a></li>
+    <li><a href="{% url 'adm_message_list' %}">Manage Chat Messages</a></li>
+    <li><a href="{% url 'adm_contact_list' %}">Manage Contacts</a></li>
+    <li><a href="{% url 'adm_image_list' %}">Manage Images</a></li>
+    <li><a href="{% url 'adm_payment_list' %}">Manage Payments</a></li>
+</ul>
+
+{% endblock %}

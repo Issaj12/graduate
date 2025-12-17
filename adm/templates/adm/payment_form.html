@@ -1,0 +1,10 @@
+{% extends 'main_footer.html' %} {% load static %} {% block content %}
+
+<h1>{% if form.instance.pk %}Edit{% else %}Add{% endif %} Payment</h1>
+<form method="post">
+  {% csrf_token %} {{ form.as_p }}
+  <button type="submit">Save</button>
+</form>
+<a href="{% url 'adm_payment_list' %}">Cancel</a>
+
+{% endblock %}

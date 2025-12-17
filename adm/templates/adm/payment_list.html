@@ -1,0 +1,40 @@
+{% extends 'main_footer.html' %} {% load static %} {% block content %}
+
+<h1>Payments</h1>
+<a href="{% url 'adm_payment_create' %}" class="btn btn-primary">Add Payment</a>
+<a href="{% url 'adm_payment_download' %}" class="btn btn-success"
+  >Download CSV</a
+>
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Phone Number</th>
+    <th>Amount</th>
+    <th>Status</th>
+    <th>Transaction ID</th>
+    <th>Created At</th>
+    <th>Actions</th>
+  </tr>
+  {% for payment in payments %}
+  <tr>
+    <td>{{ payment.name }}</td>
+    <td>{{ payment.phone_number }}</td>
+    <td>{{ payment.amount }}</td>
+    <td>{{ payment.status }}</td>
+    <td>{{ payment.transaction_id }}</td>
+    <td>{{ payment.created_at }}</td>
+    <td>
+      <a
+        href="{% url 'adm_payment_update' payment.pk %}"
+        class="btn btn-primary"
+        >Edit</a
+      >
+      <a href="{% url 'adm_payment_delete' payment.pk %}" class="btn btn-danger"
+        >Delete</a
+      >
+    </td>
+  </tr>
+  {% endfor %}
+</table>
+
+{% endblock %}

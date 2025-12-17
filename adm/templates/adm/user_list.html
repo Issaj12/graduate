@@ -1,0 +1,26 @@
+{% extends 'main_footer.html' %} {% load static %} {% block content %}
+
+<h1>Users</h1>
+<a href="{% url 'user_create' %}" class="btn btn-primary">Add User</a>
+
+<table>
+  <tr>
+    <th>Username</th>
+    <th>Email</th>
+    <th>Actions</th>
+  </tr>
+  {% for user in users %}
+  <tr>
+    <td>{{ user.username }}</td>
+    <td>{{ user.email }}</td>
+    <td>
+      <a href="{% url 'user_edit' user.id %}" class="btn btn-primary">Edit</a>
+      <a href="{% url 'user_delete' user.id %}" class="btn btn-danger"
+        >Delete</a
+      >
+    </td>
+  </tr>
+  {% endfor %}
+</table>
+
+{% endblock %}

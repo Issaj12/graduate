@@ -1,0 +1,34 @@
+{% extends 'main.html' %} {% load static %} {% block content %}
+<div class="img-day-container">
+  <h1>All Uploaded Photos</h1>
+
+  <div style="display: flex; gap: 15px; margin-bottom: 20px">
+    <a href="{% url 'images' %}" class="img-view-link">Upload More Photos</a>
+    <a href="{% url 'download_all' %}" class="download-btn">Download All</a>
+  </div>
+
+  {% if images %}
+  <div class="img-gallery">
+    {% for image in images %}
+    <div class="img-card">
+      <img src="{{ image.photo.url }}" alt="Photo" />
+      {% if image.description %}
+      <p>{{ image.description }}</p>
+      {% endif %}
+      <small>{{ image.uploaded_at|date:"M d, Y H:i" }}</small>
+      <!-- Download Button -->
+      <a
+        href="{{ image.photo.url }}"
+        download="{{ image.photo.name }}"
+        class="download-btn"
+        >Download</a
+      >
+    </div>
+    {% endfor %}
+  </div>
+  {% else %}
+  <p class="img-empty">No photos uploaded yet.</p>
+  {% endif %}
+</div>
+
+{% endblock %}

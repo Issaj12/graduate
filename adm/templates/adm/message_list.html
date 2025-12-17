@@ -1,0 +1,31 @@
+{% extends 'main_footer.html' %} {% load static %} {% block content %}
+
+<h1>Messages</h1>
+<a href="{% url 'adm_message_create' %}" class="btn btn-primary"
+  >Add New Message</a
+>
+<table>
+  <tr>
+    <th>User</th>
+    <th>Content</th>
+    <th>Timestamp</th>
+    <th>Actions</th>
+  </tr>
+  {% for msg in messages %}
+  <tr>
+    <td>{{ msg.user.username }}</td>
+    <td>{{ msg.content }}</td>
+    <td>{{ msg.timestamp }}</td>
+    <td>
+      <a href="{% url 'adm_message_update' msg.pk %}" class="btn btn-primary"
+        >Edit</a
+      >
+      <a href="{% url 'adm_message_delete' msg.pk %}" class="btn btn-danger"
+        >Delete</a
+      >
+    </td>
+  </tr>
+  {% endfor %}
+</table>
+
+{% endblock %}
