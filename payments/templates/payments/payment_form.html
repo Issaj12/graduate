@@ -4,7 +4,8 @@
   <h2>Make a Payment</h2>
 
   <form method="post" class="payment-form">
-    {% csrf_token %} {{ form.as_p }}
+    {% csrf_token %}
+    {{ form.as_p }}
     <button type="submit" class="btn-pay">Pay Now</button>
   </form>
 </div>
