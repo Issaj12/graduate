@@ -79,10 +79,20 @@ def initiate_payment(request):
 
     else:
         form = PaymentForm(user=request.user)
-        
+
     context = {"form": form}
     return render(request, "payments/payment_form.html", context)
 
+
+
+# checking it
+
+
+def transaction_status(request, transaction_id):
+    transaction = Transaction.objects.filter(id=transaction_id).first()
+    if transaction:
+        return JsonResponse({"status": transaction.status})
+    return JsonResponse({"status": "Not found"}, status=404)
 
 
 

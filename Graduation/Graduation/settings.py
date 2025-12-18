@@ -31,7 +31,8 @@ SECRET_KEY = 'django-insecure-@ocuzn!y#8lci-@tjds!llqys=83ckins!5*#1w#5_$6io*nhn
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['githua.pythonanywhere.com',
+    'www.githua.pythonanywhere.com',]
 
 
 # Application definition
@@ -53,7 +54,7 @@ INSTALLED_APPS = [
     'adm',
     # while deploying
     # 'whitenoise.runserver_nostatic'
-    
+
 ]
 
 MIDDLEWARE = [
@@ -133,17 +134,28 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
 
-STATIC_URL = 'static/'
-STATICFILES_DIRS = [BASE_DIR / "static",]
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles') 
+# STATIC_URL = 'static/'
+# STATICFILES_DIRS = [BASE_DIR / "static",]
+# STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+# settings.py
 
+STATIC_URL = '/static/'  # URL prefix
+STATICFILES_DIRS = [
+    BASE_DIR / "static",  # folder where your app's static files are
+]
+STATIC_ROOT = BASE_DIR / "staticfiles"  # folder where collectstatic will gather everything
+
+
+# MEDIA_URL = '/media/'
+# MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_ROOT = BASE_DIR / 'media'
 
-# email 
+
+# email
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 LOGIN_REDIRECT_URL = '/'
-LOGOUT_REDIRECT_URL = '/accounts/login/' 
+LOGOUT_REDIRECT_URL = '/accounts/login/'
 
 
 
